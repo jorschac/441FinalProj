@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export class CardContainer extends Component {
     render() {
-        let paletteCards = this.props.propList.filteredData.map(x => <PaletteCard palette={x} handleSelectPalette={this.props.propList.handleClick} 
+        let paletteCards = this.props.propList.filteredData.map(x => <PaletteCard weget={x} handleSelectPalette={this.props.propList.handleClick} 
             handleResetLock={this.props.propList.handleResetLock}/>)
 
         return (
@@ -15,24 +15,22 @@ export class CardContainer extends Component {
 
 class PaletteCard extends Component {
     handleClick = () => {
-        let colors = [this.props.palette.light_shade, this.props.palette.light_accent, this.props.palette.main, 
-            this.props.palette.dark_accent, this.props.palette.dark_shade];
+        /*let colors = [this.props.palette.light_shade, this.props.palette.light_accent, this.props.palette.main, 
+            this.props.palette.dark_accent, this.props.palette.dark_shade];*/
         this.props.handleResetLock();
-        this.props.handleSelectPalette(colors);
+        //this.props.handleSelectPalette(colors);
     }
 
     render() {
-        let colors = [this.props.palette.light_shade, this.props.palette.light_accent, this.props.palette.main, 
-            this.props.palette.dark_accent, this.props.palette.dark_shade];
+        /*let colors = [this.props.palette.light_shade, this.props.palette.light_accent, this.props.palette.main, 
+            this.props.palette.dark_accent, this.props.palette.dark_shade];*/
         
-        colors = colors.map(x => <PaletteCardColor color={x} />);
+        //colors = colors.map(x => <PaletteCardColor color={x} />);
 
         return (
             <div className="palette" aria-label="color palette" onClick={this.handleClick}>
                 <div className="setinfo">
-                    <p className="author">{'Created by ' + this.props.palette.username}</p>
-                    <div className="colorcontainer">
-                        {colors}
+                    <div className="colorcontainer">                   
                     </div>
                 </div>
             </div>
@@ -41,7 +39,7 @@ class PaletteCard extends Component {
 }
 
 
-
+/*
 class PaletteCardColor extends Component {
     render() {
         let bgcolor = {backgroundColor: this.props.color};
@@ -49,7 +47,7 @@ class PaletteCardColor extends Component {
             <div className="color" style={bgcolor}></div>
         );
     }
-}
+}*/
 /*
 export class NumberOfResult extends Component {
     render() {

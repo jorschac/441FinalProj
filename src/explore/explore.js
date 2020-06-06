@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { UpperContainer } from './exploreUpper.js';
-import { SelectedPanel } from './exploreSelected.js';
 import {CardContainer } from './explorePalettes.js';
 import { Spinner } from '../common/spinner.js';
-import { AlertBox } from '../common/alertBox.js';
 import * as convert from 'color-convert'; // for converting color values
 import firebase from "firebase/app";
 import 'firebase/database';
@@ -121,19 +119,16 @@ export class Explore extends Component {
             , followingNum: this.props.propList.currUsrFollowingNum, followersNum: this.props.propList.currUsrFollowersNum,
             UsrName: this.props.propList.currUsrName, UsrDesc: this.props.propList.currUsrDesc};
         
-        let cardContainerProp = {filteredData: this.state.filteredPalettes, handleClick: this.props.propList.handleSelectPalette, 
+        let cardContainerProp = {filteredData: this.state.filteredPalettes.slice(0, 16), handleClick: this.props.propList.handleSelectPalette, 
             handleResetLock: this.handleResetLock};
 
-        let selectedPanelProp = {selected: this.props.propList.selected, palette: this.props.propList.selectedPalette, handleLock: this.handleUpdateLock, 
-            lockStatus: this.state.lockStatus}
+
 
         return (
             <main>
                 <UpperContainer propList={upperContainerProp} />
-                <AlertBox msg={this.state.error}/>
                 {!this.state.dataLoaded && <Spinner />}
                 <CardContainer propList={cardContainerProp} />
-                <SelectedPanel propList={selectedPanelProp} />
             </main>
         );
     }
